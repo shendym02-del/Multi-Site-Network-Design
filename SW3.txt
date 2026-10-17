@@ -1,0 +1,17 @@
+Switch 3
+
+enable
+conf t
+hostname SW3
+no ip domain-lookup
+
+interface range fa0/2 - 5
+ switchport mode access
+ switchport access vlan 1
+ spanning-tree portfast
+interface vlan 1
+ ip address 192.168.60.2 255.255.255.0
+ no shutdown
+ip default-gateway 192.168.60.1
+end
+copy running-config startup-config

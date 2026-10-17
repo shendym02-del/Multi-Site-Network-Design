@@ -1,0 +1,26 @@
+Switch 1
+
+enable
+conf t
+hostname SW1
+no ip domain-lookup
+
+vlan 10
+ name IT
+vlan 20
+ name Sales
+vlan 30
+ name Service
+interface range fa0/2 - 4
+ switchport mode access
+ switchport access vlan 10
+interface range fa0/5 - 7
+ switchport mode access
+ switchport access vlan 20
+interface range fa0/8 - 11
+ switchport mode access
+ switchport access vlan 30
+interface gig0/1
+ switchport mode trunk
+end
+copy running-config startup-config
